@@ -1198,6 +1198,7 @@ func (s *BootlooseSuite) initializeBootlooseClusterInDir(dir string) error {
 					Privileged:   true,
 					Volumes:      volumes,
 					PortMappings: portMaps,
+					Networks:     s.Networks,
 				},
 			},
 		},
@@ -1211,6 +1212,7 @@ func (s *BootlooseSuite) initializeBootlooseClusterInDir(dir string) error {
 				Privileged:   true,
 				Volumes:      volumes,
 				PortMappings: portMaps,
+				Networks:     s.Networks,
 			},
 			Count: 1,
 		})
@@ -1223,6 +1225,7 @@ func (s *BootlooseSuite) initializeBootlooseClusterInDir(dir string) error {
 				Image:        defaultBootLooseImage,
 				Privileged:   true,
 				PortMappings: []config.PortMapping{{ContainerPort: 22}},
+				Networks:     s.Networks,
 			},
 			Count: 1,
 		})
@@ -1242,6 +1245,7 @@ func (s *BootlooseSuite) initializeBootlooseClusterInDir(dir string) error {
 						ContainerPort: 80,
 					},
 				},
+				Networks: s.Networks,
 			},
 			Count: 1,
 		})
@@ -1314,6 +1318,7 @@ func (s *BootlooseSuite) generateRegistryMachineSpec() *config.Machine {
 		},
 		Volumes:   volumes,
 		ExtraArgs: extraArgs,
+		Networks:  s.Networks,
 	}
 }
 
