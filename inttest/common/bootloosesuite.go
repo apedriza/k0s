@@ -1198,6 +1198,7 @@ func (s *BootlooseSuite) initializeBootlooseClusterInDir(dir string) error {
 					Privileged:   true,
 					Volumes:      volumes,
 					PortMappings: portMaps,
+					Networks:     s.Networks,
 				},
 			},
 		},
