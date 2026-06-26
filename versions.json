@@ -8,5 +8,10 @@
     "version": "v1.36.1+k0s.1",
     "title": "v1.36.1+k0s.1",
     "aliases": []
+  },
+  {
+    "version": "v1.35.5+k0s.1",
+    "title": "v1.35.5+k0s.1",
+    "aliases": []
   }
 ]
