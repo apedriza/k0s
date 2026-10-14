@@ -26,7 +26,7 @@ type Component interface {
 	Init(context.Context) error
 
 	// Start starts the component. When Start returns, the component is executing in
-	// the background. Run may be called only once after Init. If the component
+	// the background. Start may be called only once after Init. If the component
 	// is a Reconciler, a call to Reconcile may be required before Start
 	// can be called. The given context is not intended to replace a call to
 	// Stop when canceled. It's merely used to cancel the component's startup.

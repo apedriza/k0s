@@ -59,6 +59,8 @@ type Status struct {
 	// The hex form ID is stored as string
 	// +kubebuilder:validation:Pattern="^[a-fA-F0-9]+$"
 	MemberID string `json:"memberID"`
+	// IsLeader stores whether etcd member is the etcd leader in the cluster.
+	IsLeader bool `json:"isLeader"`
 	// ReconcileStatus is the last status of the reconcile process
 	ReconcileStatus string `json:"reconcileStatus,omitempty"`
 	Message         string `json:"message,omitempty"`

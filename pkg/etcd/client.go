@@ -29,6 +29,7 @@ type Member struct {
 	Name      string
 	PeerURL   string
 	IsLearner bool
+	IsLeader  bool
 }
 
 // NewClient creates new Client
@@ -119,11 +120,16 @@ func (c *Client) ListMembers(ctx context.Context) ([]Member, error) {
 		if len(m.PeerURLs) > 0 {
 			peerURL = m.PeerURLs[0]
 		}
+		st, err := c.client.Status(ctx, m.ClientURLs[0])
+		if err != nil {
+			return nil, fmt.Errorf("failed to get status for member %s: %w", m.Name, err)
+		}
 		members = append(members, Member{
 			ID:        m.ID,
 			Name:      m.Name,
 			PeerURL:   peerURL,
 			IsLearner: m.IsLearner,
+			IsLeader:  st.Leader == m.ID,
 		})
 	}
 	return members, nil
