@@ -537,7 +537,11 @@ func (e *EtcdMemberReconciler) reconcileMember(ctx context.Context, etcdClient *
 	}
 
 	exists := slices.ContainsFunc(clusterMembers, func(m etcd.Member) bool {
-		return m.ID == memberID
+		if m.ID == memberID {
+			member.Status.IsLeader = m.IsLeader
+			return true
+		}
+		return false
 	})
 
 	// Member not listed as etcd member.
